@@ -1,9 +1,92 @@
 import './App.css'
+import { initialData } from './seedData'
+import { useReducer, useEffect, useState } from "react"
+import { reducer } from "./reducer"
+import { load, save } from "./storage"
+import type { Screen } from "./types"
+import type { ReactNode } from "react"
+import { dueCards } from "./dueCards"
+
 
 function App() {
 
+  const [data, dispatch] = useReducer(reducer, initialData, () => load() ?? initialData)
+
+  const [screen, setScreen] = useState<Screen>({name: "decks" })
+
+  useEffect(() => {
+    save(data)
+  }, [data])
+
+  const reviewScreen = (deckId: string) => {
+    setScreen({ name: "review", deckId: deckId })
+  }
+
+  const homeScreen = () => {
+    setScreen({ name: "decks" })
+  }
+
+  const editorScreen = (deckId: string) => {
+    setScreen({ name: "editor", deckId: deckId })
+  }
+
+  const today = new Date()
+
+  const deckItems = data.decks.map(deck => {
+    const count = dueCards(data.cards, today).filter((card) => card.deckId === deck.id).length
+    return (
+    <div key={deck.id} className="deck-row">
+      <div>
+        <span>{deck.name}</span>
+        <br />
+        <span>{count} {count > 1 ? "cartes dues" : "carte due"}</span>
+        </div>
+      <div>
+        <button className="btn suppress-btn" onClick={() => dispatch({ type: "delete_deck", id: deck.id })}>
+          Supprimer
+        </button>
+        <button className="btn review-btn" onClick={() => reviewScreen(deck.id)}>Réviser</button>
+        <button className="btn editor-btn" onClick={() => editorScreen(deck.id)}>Modifier</button>
+      </div>
+    </div>
+  )})
+
+  let content: ReactNode
+
+  switch (screen.name) {
+    case "decks":
+      content =
+        <div className="container">
+          <h1>Accueil</h1>
+          <div id="home">{deckItems}</div>
+        </div>
+      break
+    case "review":
+      content =
+        <div className="container">
+          <h1>Réviser</h1>
+          <div id="home">
+            <button className="btn home-btn" onClick={homeScreen}>Accueil</button>
+          </div>
+        </div>
+      break
+    case "editor":
+      content =
+        <div className="container">
+          <h1>Modifier</h1>
+          <div id="home">
+            <button className="btn home-btn" onClick={homeScreen}>Accueil</button>
+          </div>
+        </div>
+      break
+    default:
+      content = <p>Ecran inconnu</p>
+  }
+
   return (
-      <h1>Welcome to Recall Flashcards</h1>
+      <>
+        {content}
+      </>
   )
 }
 

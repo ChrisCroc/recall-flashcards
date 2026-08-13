@@ -1,0 +1,78 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.container > h1 {
+  text-align: center;
+  color: rgb(194, 152, 2);
+}
+
+#home {
+  background-color: rgb(1, 1, 56);
+  display: flex;
+  flex-direction: column;
+  color: rgb(194, 152, 2);
+  padding: 8px;
+  border-radius: 10px;
+  gap: 8px;
+}
+
+.deck-row {
+  border: 1px solid rgba(17, 17, 228, 0.6);
+  background-color: rgba(3, 3, 139, 0.6);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+/* Button generic */
+
+.btn {
+  border: none;
+  margin: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  width: 95px;
+  height: 30px;
+}
+ /* Custom buttons */
+
+.suppress-btn {
+  background-color: red;
+  color: white;
+}
+
+.suppress-btn:hover {
+  background-color: darkred;
+}
+
+.review-btn {
+  background-color: rgb(31, 31, 96);
+  color: white;
+}
+
+.review-btn:hover {
+  background-color: rgb(143, 143, 244);
+}
+
+.home-btn {
+  background-color: rgb(31, 31, 96);
+  color: white;
+}
+
+.home-btn:hover {
+  background-color: rgb(143, 143, 244);
+}
+
+.editor-btn {
+  background-color: aqua;
+}
+
+.editor-btn:hover {
+  background-color: rgb(14, 172, 172);
+}

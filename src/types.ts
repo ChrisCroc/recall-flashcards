@@ -30,3 +30,6 @@ export type Screen =
   | { name: "decks" }
   | { name: "review"; deckId: string | "all" }
   | { name: "editor"; deckId: string }
+
+export type Action =
+  | { type: "delete_deck"; id: string }
