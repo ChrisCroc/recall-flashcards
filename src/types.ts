@@ -33,3 +33,5 @@ export type Screen =
 
 export type Action =
   | { type: "delete_deck"; id: string }
+  | { type: "grade_card"; id: string; grade: Grade; today: Date }
+  | { type: "add_deck", id: string}

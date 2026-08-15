@@ -68,6 +68,36 @@ export const initialData: AppData =
       easeFactor: 2.5,
       interval: 0,
       repetitions: 0,
+      dueDate: "2026-08-07" },
+      {
+      id: "6",
+      deckId: "Deck1",
+      front: "TypeScript beginner",
+      back: "string",
+      createdAt: "2026-08-06",
+      easeFactor: 2.5,
+      interval: 0,
+      repetitions: 0,
+      dueDate: "2026-08-07" },
+      {
+      id: "7",
+      deckId: "Deck1",
+      front: "TypeScript beginner",
+      back: "string",
+      createdAt: "2026-08-06",
+      easeFactor: 2.5,
+      interval: 0,
+      repetitions: 0,
+      dueDate: "2026-08-07" },
+      {
+      id: "8",
+      deckId: "Deck1",
+      front: "TypeScript beginner",
+      back: "string",
+      createdAt: "2026-08-06",
+      easeFactor: 2.5,
+      interval: 0,
+      repetitions: 0,
       dueDate: "2026-08-07" }
     ]
   }

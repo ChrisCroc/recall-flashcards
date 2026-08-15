@@ -6,6 +6,7 @@ import { load, save } from "./storage"
 import type { Screen } from "./types"
 import type { ReactNode } from "react"
 import { dueCards } from "./dueCards"
+import { ReviewScreen } from "./components/ReviewScreen"
 
 
 function App() {
@@ -51,6 +52,8 @@ function App() {
     </div>
   )})
 
+  const totalDueCards = dueCards(data.cards, today).length
+
   let content: ReactNode
 
   switch (screen.name) {
@@ -58,18 +61,19 @@ function App() {
       content =
         <div className="container">
           <h1>Accueil</h1>
+          <div>{totalDueCards} cartes a revoir aujourd'hui</div>
           <div id="home">{deckItems}</div>
-        </div>
-      break
-    case "review":
-      content =
-        <div className="container">
-          <h1>Réviser</h1>
-          <div id="home">
-            <button className="btn home-btn" onClick={homeScreen}>Accueil</button>
+          <div>
+            <button onClick={addDeck} >+ deck</button>
           </div>
         </div>
       break
+    case "review": {
+      const rightCards = dueCards(data.cards, today).filter((card) => card.deckId === screen.deckId)
+      content =
+        <ReviewScreen cards={rightCards} today={today} onExit={homeScreen} dispatch={dispatch} />
+      break
+    }
     case "editor":
       content =
         <div className="container">
