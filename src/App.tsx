@@ -7,6 +7,7 @@ import type { Screen } from "./types"
 import type { ReactNode } from "react"
 import { dueCards } from "./dueCards"
 import { ReviewScreen } from "./components/ReviewScreen"
+import { DeckEditorScreen } from "./components/DeckEditorScreen"
 
 
 function App() {
@@ -27,8 +28,8 @@ function App() {
     setScreen({ name: "decks" })
   }
 
-  const editorScreen = (deckId: string) => {
-    setScreen({ name: "editor", deckId: deckId })
+  const editorScreen = (deckId: string | null) => {
+    setScreen({ name: "editor", deckId: deckId})
   }
 
   const today = new Date()
@@ -61,10 +62,10 @@ function App() {
       content =
         <div className="container">
           <h1>Accueil</h1>
-          <div>{totalDueCards} cartes a revoir aujourd'hui</div>
+          <div id="recap">{totalDueCards} cartes a revoir aujourd'hui</div>
           <div id="home">{deckItems}</div>
           <div>
-            <button onClick={addDeck} >+ deck</button>
+            <button className="btn add-btn" onClick={() => editorScreen(null)}>+ Nouveau deck</button>
           </div>
         </div>
       break
@@ -76,12 +77,7 @@ function App() {
     }
     case "editor":
       content =
-        <div className="container">
-          <h1>Modifier</h1>
-          <div id="home">
-            <button className="btn home-btn" onClick={homeScreen}>Accueil</button>
-          </div>
-        </div>
+        <DeckEditorScreen deckId={screen.deckId} decks={data.decks} cards={data.cards} dispatch={dispatch} onExit={homeScreen} onOpenDeck={editorScreen} />
       break
     default:
       content = <p>Ecran inconnu</p>

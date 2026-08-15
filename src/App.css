@@ -9,6 +9,8 @@
   color: rgb(194, 152, 2);
 }
 
+/* Accueil */
+
 #home {
   background-color: rgb(1, 1, 56);
   display: flex;
@@ -28,6 +30,26 @@
   align-items: center;
   padding: 5px;
 }
+
+#recap {
+  background-color: rgba(14, 172, 172, 0.65);
+  font-size: 2rem;
+  color: rgb(31, 31, 96);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Review */
+
+
+
+/* Editor */
+
+
 
 /* Button generic */
 
@@ -75,4 +97,20 @@
 
 .editor-btn:hover {
   background-color: rgb(14, 172, 172);
+}
+
+.add-btn {
+  background-color: #C29803;
+  color: rgb(31, 31, 96);
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.add-btn:hover {
+  background-color: rgb(31, 31, 96);
+  border: dotted 4px #C29803;
+  color: #C29803;
+  font-size: large;
+  transition: ease 0.3s;
 }

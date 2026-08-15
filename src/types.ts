@@ -29,9 +29,10 @@ export type Grade = 1 | 3 | 4 | 5
 export type Screen =
   | { name: "decks" }
   | { name: "review"; deckId: string | "all" }
-  | { name: "editor"; deckId: string }
+  | { name: "editor"; deckId: string | null }
 
 export type Action =
   | { type: "delete_deck"; id: string }
   | { type: "grade_card"; id: string; grade: Grade; today: Date }
-  | { type: "add_deck", id: string}
+  | { type: "add_deck"; deck: Deck}
+  | { type: "rename_deck"; id: string; name: string}

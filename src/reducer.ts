@@ -12,9 +12,16 @@ export function reducer(state: AppData, action: Action): AppData {
           return schedule(card, action.grade, action.today)
         else
           return card
-      } )}
+      }) }
     case "add_deck":
-      return {}
+      return { ...state, decks:  [...state.decks, action.deck] }
+    case "rename_deck":
+      return { ...state, decks: state.decks.map(deck => {
+        if (deck.id === action.id)
+          return {...deck, name: action.name}
+        else
+          return deck
+      }) }
     default:
       throw new Error("Action inconnue : " + (action as Action).type)
   }
