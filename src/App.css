@@ -114,3 +114,43 @@
   font-size: large;
   transition: ease 0.3s;
 }
+
+.failed-btn {
+  background-color: rgba(121, 3, 3, 0.658);
+  border: dotted 3px rgba(68, 3, 3, 0.9)
+}
+
+.failed-btn:hover {
+  background-color: rgba(121, 3, 3, 0.9);
+  border: solid 3px rgba(68, 3, 3, 0.9)
+}
+
+.hard-btn {
+  background-color: rgba(169, 74, 5, 0.658);
+  border: dotted 3px rgba(68, 3, 3, 0.9)
+}
+
+.hard-btn:hover {
+  background-color: rgba(169, 74, 5, 0.9);
+  border: solid 3px rgba(109, 41, 2, 0.9)
+}
+
+.ok-btn {
+  background-color: rgba(20, 15, 120, 0.658);
+  border: dotted 3px rgba(68, 3, 3, 0.9)
+}
+
+.ok-btn:hover {
+  background-color: rgba(20, 15, 120, 0.9);
+  border: solid 3px rgba(23, 4, 86, 0.9)
+}
+
+.easy-btn {
+  background-color: rgba(15, 111, 51, 0.658);
+  border: dotted 3px rgba(68, 3, 3, 0.9)
+}
+
+.easy-btn:hover {
+  background-color: rgba(15, 111, 51, 0.9);
+  border: solid 3px rgba(2, 72, 43, 0.9)
+}

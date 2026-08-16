@@ -38,16 +38,18 @@ export function ReviewScreen({ cards, today, onExit, dispatch }: ReviewScreenPro
   return (
     <div className="container">
       <h1>Réviser</h1>
-      <p>{currentCard.front}</p>
-      {!revealed && <button onClick={reveal}>Révéler</button>}
-      {revealed && <p>{currentCard.back}</p>}
-      {revealed &&
-        (<>
-          <button className="btn home-btn" onClick={() => grade(1)}>Encore</button>
-          <button className="btn home-btn" onClick={() => grade(3)}>Difficile</button>
-          <button className="btn home-btn" onClick={() => grade(4)}>Ok</button>
-          <button className="btn home-btn" onClick={() => grade(5)}>Facile</button>
-        </>)}
+      <div>
+        <p>{currentCard.front}</p>
+        {!revealed && <button className="btn" onClick={reveal}>Révéler</button>}
+        {revealed && <p>{currentCard.back}</p>}
+        {revealed &&
+          (<>
+            <button className="btn failed-btn" onClick={() => grade(1)}>Encore</button>
+            <button className="btn hard-btn" onClick={() => grade(3)}>Difficile</button>
+            <button className="btn ok-btn" onClick={() => grade(4)}>Ok</button>
+            <button className="btn easy-btn" onClick={() => grade(5)}>Facile</button>
+          </>)}
+        </div>
     </div>
   )
 }
