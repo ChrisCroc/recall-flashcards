@@ -49,7 +49,24 @@
 
 /* Editor */
 
+.card-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.card-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+input {
+  min-width: 95px;
+  min-height: 30px;
+  border-radius: 5px;
+}
 
 /* Button generic */
 

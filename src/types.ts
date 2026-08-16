@@ -36,3 +36,5 @@ export type Action =
   | { type: "grade_card"; id: string; grade: Grade; today: Date }
   | { type: "add_deck"; deck: Deck}
   | { type: "rename_deck"; id: string; name: string}
+  | { type: "add_card"; card: Card }
+  | { type: "delete_card"; id: string }

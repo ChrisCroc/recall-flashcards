@@ -1,4 +1,4 @@
-import type { Card } from "./types"
+import type { Card, Deck } from "./types"
 
 export function makeCard(overrides: Partial<Card> = {}): Card {
   const defaultCard: Card = {
@@ -13,4 +13,14 @@ export function makeCard(overrides: Partial<Card> = {}): Card {
     dueDate: new Date("2026-10-01").toISOString(),
   }
   return { ...defaultCard, ...overrides }
+}
+
+export function makeDeck(overrides: Partial<Deck> = {}): Deck {
+  const defaultDeck: Deck = {
+    id: "deck1",
+    name: "javascript",
+    origin: "user",
+    createdAt: new Date("2026-10-01").toISOString(),
+  }
+  return { ...defaultDeck, ...overrides }
 }

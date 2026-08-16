@@ -22,6 +22,10 @@ export function reducer(state: AppData, action: Action): AppData {
         else
           return deck
       }) }
+    case "add_card":
+      return { ...state, cards: [...state.cards, action.card] }
+    case "delete_card":
+      return { ...state, cards: state.cards.filter(card => card.id !== action.id) }
     default:
       throw new Error("Action inconnue : " + (action as Action).type)
   }
