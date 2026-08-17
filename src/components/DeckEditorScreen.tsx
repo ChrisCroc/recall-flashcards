@@ -73,12 +73,14 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
     <div className="container">
       <h1>{currentDeck === null ? "New Deck" : currentDeck.name}</h1>
       {cardDisplay}
-      <div>
+      <div className="name-action">
         <h3>{currentDeck === null ? "Nouveau deck" : "Modifier le nom du deck"}</h3>
-        <input type="text" value={text} onChange={inputText} />
-        <button className="btn" onClick={handleSubmit}>Valider</button>
+        <div className="name-action-entries">
+          <input type="text" value={text} onChange={inputText} />
+          <button className="btn easy-btn" onClick={handleSubmit}>Valider</button>
+        </div>
       </div>
-      <div>
+      <div className="cards-infos">
         <h3>Nouvelle carte</h3>
         <div className="card-input">
           <span>
@@ -88,11 +90,13 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
           <span>
             <p>Réponse</p>
             <input type="text" value={versoText} onChange={inputVersoText} />
-            <button className="btn" onClick={handleCardSubmit}>Valider</button>
+            <button className="btn easy-btn" onClick={handleCardSubmit}>Valider</button>
           </span>
         </div>
       </div>
-      <button className="btn" onClick={onExit}>Accueil</button>
+      <div className="editor-home-btn">
+        <button className="btn home-btn" onClick={onExit}>Accueil</button>
+      </div>
     </div>
   )
 }

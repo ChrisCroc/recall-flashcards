@@ -20,7 +20,7 @@ export function ReviewScreen({ cards, today, onExit, dispatch }: ReviewScreenPro
     return (
       <div className="container">
         <p>Session terminée</p>
-        <button onClick={onExit}>Retour aux decks</button>
+        <button className="btn home-btn" onClick={onExit}>Retour aux decks</button>
       </div>
     )
   }
@@ -38,17 +38,22 @@ export function ReviewScreen({ cards, today, onExit, dispatch }: ReviewScreenPro
   return (
     <div className="container">
       <h1>Réviser</h1>
-      <div>
+      <div className="review-infos">
         <p>{currentCard.front}</p>
-        {!revealed && <button className="btn" onClick={reveal}>Révéler</button>}
+        {!revealed && <button className="btn easy-btn" onClick={reveal}>Révéler</button>}
         {revealed && <p>{currentCard.back}</p>}
         {revealed &&
           (<>
-            <button className="btn failed-btn" onClick={() => grade(1)}>Encore</button>
-            <button className="btn hard-btn" onClick={() => grade(3)}>Difficile</button>
-            <button className="btn ok-btn" onClick={() => grade(4)}>Ok</button>
-            <button className="btn easy-btn" onClick={() => grade(5)}>Facile</button>
+            <div className="grades">
+              <button className="btn failed-btn" onClick={() => grade(1)}>Encore</button>
+              <button className="btn hard-btn" onClick={() => grade(3)}>Difficile</button>
+              <button className="btn ok-btn" onClick={() => grade(4)}>Ok</button>
+              <button className="btn easy-btn" onClick={() => grade(5)}>Facile</button>
+            </div>
           </>)}
+          <div className="editor-home-btn">
+            <button className="btn home-btn" onClick={onExit}>Accueil</button>
+          </div>
         </div>
     </div>
   )

@@ -6,24 +6,30 @@
 
 .container > h1 {
   text-align: center;
-  color: rgb(194, 152, 2);
+  color: #f3e9dc;
 }
 
 /* Accueil */
 
 #home {
-  background-color: rgb(1, 1, 56);
+  background-color: #895737;
   display: flex;
   flex-direction: column;
-  color: rgb(194, 152, 2);
+  color: #f3e9dc;
   padding: 8px;
   border-radius: 10px;
   gap: 8px;
 }
 
+.center-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .deck-row {
-  border: 1px solid rgba(17, 17, 228, 0.6);
-  background-color: rgba(3, 3, 139, 0.6);
+  border: 1px solid #f3e9dc;
+  background-color: #c08552;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
@@ -32,9 +38,9 @@
 }
 
 #recap {
-  background-color: rgba(14, 172, 172, 0.65);
+  background-color: #895737;
   font-size: 2rem;
-  color: rgb(31, 31, 96);
+  color: #f3e9dc;
   border-radius: 5px;
   margin-bottom: 20px;
   min-height: 75px;
@@ -45,27 +51,98 @@
 
 /* Review */
 
+.review-infos {
+  background-color: #895737;
+  border: solid 2px #f3e9dc;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 10px;
+}
 
+.review-infos > p {
+  color: #f3e9dc;
+}
+
+.grades {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 /* Editor */
 
 .card-display {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #895737;
+  border-radius: 5px;
+  color: #5e3023;
+  gap: 5px;
+  margin: 5px auto;
+  border: solid 2px #f3e9dc;
+}
+
+.card-display > p {
+  border: solid 2px #f3e9dc;
+  background-color: #dab49d;
+  flex-wrap: nowrap;
+  padding: 8px;
+  min-height: 50px;
+  min-width: 100px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.name-action > h3 {
+  text-align: center;
+  color: #f3e9dc;
+}
+
+.name-action {
+  background-color: #895737;
+  padding: 15px;
+  border: solid 2px #f3e9dc;
+  border-radius: 5px;
+}
+
+.name-action-entries {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.cards-infos {
+  background-color: #895737;
+  border-radius: 5px;
+  color: #f3e9dc;
+  gap: 5px;
+  margin: 5px auto;
+  border: solid 2px #f3e9dc;
+}
+
+.cards-infos > h3 {
+  text-align: center;
+}
+
 .card-input {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 20px;
+  gap: 5px;
 }
 
 input {
   min-width: 95px;
   min-height: 30px;
   border-radius: 5px;
+}
+
+.editor-home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 /* Button generic */
@@ -82,17 +159,17 @@ input {
  /* Custom buttons */
 
 .suppress-btn {
-  background-color: red;
-  color: white;
+  background-color: rgb(138, 4, 4);
+  color: #f3e9dc;
 }
 
 .suppress-btn:hover {
-  background-color: darkred;
+  background-color: rgb(76, 2, 2);
 }
 
 .review-btn {
-  background-color: rgb(31, 31, 96);
-  color: white;
+  background-color: rgb(10, 100, 180);
+  color: #f3e9dc;
 }
 
 .review-btn:hover {
@@ -100,74 +177,86 @@ input {
 }
 
 .home-btn {
-  background-color: rgb(31, 31, 96);
-  color: white;
+  background-color: #C29803;
+  color: rgb(31, 31, 96);
 }
 
 .home-btn:hover {
-  background-color: rgb(143, 143, 244);
+  background-color: rgb(31, 31, 96);
+  color: #C29803;
+  border: dotted 2px #C29803;
 }
 
 .editor-btn {
-  background-color: aqua;
+  background-color: #C29803;
+  color: #f3e9dc;
 }
 
 .editor-btn:hover {
-  background-color: rgb(14, 172, 172);
+  background-color: #895737;
+  color: #f3e9dc;
 }
 
 .add-btn {
-  background-color: #C29803;
-  color: rgb(31, 31, 96);
+  background-color: #dab49d;
+  color: #5e3023;
   height: 100px;
   width: 100px;
   border-radius: 50%;
 }
 
 .add-btn:hover {
-  background-color: rgb(31, 31, 96);
-  border: dotted 4px #C29803;
-  color: #C29803;
+  background-color: #5e3023;
+  border: dotted 4px #dab49d;
+  color: #dab49d;
   font-size: large;
   transition: ease 0.3s;
 }
 
 .failed-btn {
-  background-color: rgba(121, 3, 3, 0.658);
-  border: dotted 3px rgba(68, 3, 3, 0.9)
+  background-color: rgba(250,250,250,0);
+  border: dotted 3px rgba(208, 0, 0, 0.9);
+  color: rgba(118, 1, 1, 0.9);
 }
 
 .failed-btn:hover {
-  background-color: rgba(121, 3, 3, 0.9);
-  border: solid 3px rgba(68, 3, 3, 0.9)
+  background-color: rgba(118, 1, 1, 0.9);
+  border: solid 3px rgba(208, 0, 0, 0.9);
+  color: rgba(1, 1, 56, 0.9);
 }
 
 .hard-btn {
-  background-color: rgba(169, 74, 5, 0.658);
-  border: dotted 3px rgba(68, 3, 3, 0.9)
+  background-color: rgba(250,250,250,0);
+  border: dotted 3px rgba(239, 99, 6, 0.9);
+  color: rgba(239, 99, 6, 0.9);
 }
 
 .hard-btn:hover {
-  background-color: rgba(169, 74, 5, 0.9);
-  border: solid 3px rgba(109, 41, 2, 0.9)
+  background-color: rgba(239, 99, 6, 0.9);
+  border: solid 3px rgba(109, 41, 2, 0.9);
+  color: rgba(1, 1, 56, 0.9);
 }
 
 .ok-btn {
-  background-color: rgba(20, 15, 120, 0.658);
-  border: dotted 3px rgba(68, 3, 3, 0.9)
+  background-color: rgba(250,250,250,0);
+  border: dotted 3px rgba(57, 126, 255, 0.92);
+  color: rgba(57, 126, 255, 0.92);
 }
 
 .ok-btn:hover {
-  background-color: rgba(20, 15, 120, 0.9);
-  border: solid 3px rgba(23, 4, 86, 0.9)
+  background-color: rgba(57, 126, 255, 0.92);
+  border: solid 3px rgba(23, 4, 86, 0.9);
+  color: rgba(1, 1, 56, 0.9);
 }
 
 .easy-btn {
-  background-color: rgba(15, 111, 51, 0.658);
-  border: dotted 3px rgba(68, 3, 3, 0.9)
+  background-color: rgba(250,250,250,0);
+  border: dotted 3px rgb(0, 215, 108);
+  color: rgb(0, 215, 108);
 }
 
 .easy-btn:hover {
-  background-color: rgba(15, 111, 51, 0.9);
-  border: solid 3px rgba(2, 72, 43, 0.9)
+  background-color: rgba(0, 215, 108, 0.9);
+  border: solid 3px rgba(2, 72, 43, 0.9);
+  color: rgba(1, 1, 56, 0.9);
 }

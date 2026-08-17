@@ -63,9 +63,10 @@ function App() {
         <div className="container">
           <h1>Accueil</h1>
           <div id="recap">{totalDueCards} cartes a revoir aujourd'hui</div>
-          <div id="home">{deckItems}</div>
-          <div>
-            <button className="btn add-btn" onClick={() => editorScreen(null)}>+ Nouveau deck</button>
+          <div id="home">{deckItems}
+            <div className="center-btn">
+              <button className="btn add-btn" onClick={() => editorScreen(null)}>+ Nouveau deck</button>
+            </div>
           </div>
         </div>
       break
