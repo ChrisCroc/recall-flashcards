@@ -13,8 +13,9 @@ export function ReviewScreen({ cards, today, onExit, dispatch }: ReviewScreenPro
 
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
+  const [sessionCards] = useState(cards)
 
-  const currentCard = cards[index]
+  const currentCard = sessionCards[index]
 
   if (!currentCard) {
     return (
