@@ -6,7 +6,7 @@
 
 .container > h1 {
   text-align: center;
-  color: #f3e9dc;
+  color: #7f5539;
 }
 
 /* Accueil */
@@ -19,6 +19,7 @@
   padding: 8px;
   border-radius: 10px;
   gap: 8px;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
 }
 
 .center-btn {
@@ -47,6 +48,7 @@
   display: flex;
   align-items: center;
   padding: 10px;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
 }
 
 /* Review */
@@ -151,7 +153,7 @@ progress::-moz-progress-bar {
   color: #5e3023;
   gap: 5px;
   margin: 15px auto;
-  box-shadow: 0 2px 6px #dab49d;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
 }
 
 .card-display > p {
@@ -163,6 +165,7 @@ progress::-moz-progress-bar {
   min-width: 100px;
   text-align: center;
   border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
 }
 
 .name-action > h3 {
@@ -173,8 +176,9 @@ progress::-moz-progress-bar {
 .name-action {
   background-color: #7f5539;
   padding: 15px;
-  border: solid 2px #f3e9dc;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
   border-radius: 5px;
+  margin: 20px auto;
 }
 
 .name-action-entries {
@@ -188,8 +192,9 @@ progress::-moz-progress-bar {
   border-radius: 5px;
   color: #f3e9dc;
   gap: 5px;
-  margin: 5px auto;
-  border: solid 2px #f3e9dc;
+  margin: 25px auto;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
+  padding: 8px;
 }
 
 .cards-infos > h3 {
