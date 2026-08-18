@@ -39,6 +39,7 @@
 }
 
 #recap {
+  justify-content: space-between;
   background-color: #895737;
   font-size: 2rem;
   color: #f3e9dc;

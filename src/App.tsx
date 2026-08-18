@@ -20,7 +20,7 @@ function App() {
     save(data)
   }, [data])
 
-  const reviewScreen = (deckId: string) => {
+  const reviewScreen = (deckId: string | null) => {
     setScreen({ name: "review", deckId: deckId })
   }
 
@@ -62,7 +62,11 @@ function App() {
       content =
         <div className="container">
           <h1>Accueil</h1>
-          <div id="recap">{totalDueCards} cartes a revoir aujourd'hui</div>
+          <div id="recap">{totalDueCards} cartes a revoir aujourd'hui
+            {totalDueCards > 0 && (
+                <button className="btn review-btn" onClick={() => reviewScreen(null)}>Tout réviser</button>
+            )}
+          </div>
           <div id="home">{deckItems}
             <div className="center-btn">
               <button className="btn add-btn" onClick={() => editorScreen(null)}>+ Nouveau deck</button>
@@ -71,7 +75,10 @@ function App() {
         </div>
       break
     case "review": {
-      const rightCards = dueCards(data.cards, today).filter((card) => card.deckId === screen.deckId)
+      const dueToday = dueCards(data.cards, today)
+      const rightCards = screen.deckId === null
+      ? dueToday
+      : dueToday.filter((card) => card.deckId === screen.deckId)
       content =
         <ReviewScreen cards={rightCards} today={today} onExit={homeScreen} dispatch={dispatch} />
       break

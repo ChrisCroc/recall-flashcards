@@ -28,7 +28,7 @@ export type Grade = 1 | 3 | 4 | 5
 
 export type Screen =
   | { name: "decks" }
-  | { name: "review"; deckId: string | "all" }
+  | { name: "review"; deckId: string | null }
   | { name: "editor"; deckId: string | null }
 
 export type Action =
