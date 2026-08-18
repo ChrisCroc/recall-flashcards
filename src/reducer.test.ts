@@ -16,14 +16,16 @@ test("grade_card applies schedule to the targeted card and replaces it", () => {
   expect(updatedCard).toEqual(schedule(card, grade, today))
 })
 
-test("delete_deck filters the decks and delete the right one", () => {
+test("delete_deck filters the decks and delete the right one and delete the cards within it", () => {
   const deck = makeDeck({ id: "deck1" })
   const deck2 = makeDeck({ id: "deck2" })
-  const deckState: AppData = { version: 1, decks: [deck, deck2], cards: [] }
+  const card = makeCard({ deckId: deck.id })
+  const card2 = makeCard({ id: "3", deckId: deck2.id })
+  const deckState: AppData = { version: 1, decks: [deck, deck2], cards: [card, card2] }
 
   const result: AppData = reducer(deckState, { type: "delete_deck", id: deck.id })
 
-  expect(result).toEqual({ version: 1, decks: [deck2], cards: [] })
+  expect(result).toEqual({ version: 1, decks: [deck2], cards: [card2] })
 })
 
 test("add_deck adds a new deck to Decks[] with a new id and a new name", () => {

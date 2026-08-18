@@ -5,7 +5,9 @@ import { schedule } from "./sm2"
 export function reducer(state: AppData, action: Action): AppData {
   switch (action.type) {
     case "delete_deck":
-      return { ...state, decks: state.decks.filter(deck => deck.id !== action.id) }
+      return { ...state,
+                decks: state.decks.filter(deck => deck.id !== action.id),
+                cards: state.cards.filter(card => card.deckId !== action.id) }
     case "grade_card":
       return { ...state, cards: state.cards.map(card => {
         if (card.id === action.id)
