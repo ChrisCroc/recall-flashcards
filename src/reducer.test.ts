@@ -1,6 +1,6 @@
 import { test, expect } from "vitest"
 import { makeCard, makeDeck } from "./testHelpers"
-import type { AppData, Grade, Deck } from "./types"
+import type { AppData, Grade } from "./types"
 import { reducer } from "./reducer"
 import { schedule } from "./sm2"
 
