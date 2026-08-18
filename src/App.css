@@ -52,7 +52,7 @@
 /* Review */
 
 .review-infos {
-  background-color: #895737;
+  background-color: #7f5539;
   border: solid 2px #f3e9dc;
   border-radius: 5px;
   margin: 5px auto;
@@ -69,22 +69,93 @@
   justify-content: space-around;
 }
 
+/*
+Progress bar
+   <progress> is painted by the browser, so its internal parts are only
+   reachable through non-standard, engine-specific pseudo-elements.
+   `appearance: none` is the prerequisite: without it WebKit keeps its native
+   rendering and ignores everything below.
+
+   The names lie across engines:
+     ::-webkit-progress-bar   -> the TRACK (the unfilled part)
+     ::-webkit-progress-value -> the FILL
+     ::-moz-progress-bar      -> the FILL
+   Firefox has no track pseudo-element: there, the track IS the <progress>
+   element, which is why track styles live on the element itself and are
+   repeated for WebKit. Same intent, two vocabularies.
+
+   `accent-color` would cover this in one declaration, but it only exposes
+   the fill colour — no control over height, radius or track.
+*/
+
+progress {
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #f3e9dc;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #f3e9dc;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #C29803;
+  opacity: 0.675;
+  border-radius: 10px;
+}
+
+progress::-moz-progress-bar {
+  background-color: #C29803;
+  opacity: 0.675;
+  border-radius: 10px;
+}
+
+/* End of session */
+
+.session-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #7f5539;
+  border-radius: 5px;
+  color: #f3e9dc;
+  padding: 10px;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
+}
+
+.grade-name {
+  font-style: italic;
+}
+
+.count-recap {
+  background-color: #ede0d4;
+  border-radius: 5px;
+  color: #7f5539;
+  padding: 10px;
+  margin: 10px auto;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
+}
+
 /* Editor */
 
 .card-display {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #895737;
+  background-color: #7f5539;
   border-radius: 5px;
   color: #5e3023;
   gap: 5px;
-  margin: 5px auto;
-  border: solid 2px #f3e9dc;
+  margin: 15px auto;
+  box-shadow: 0 2px 6px #dab49d;
 }
 
 .card-display > p {
-  border: solid 2px #f3e9dc;
+  box-shadow: 2px 2px 2px #f3e9dc;
   background-color: #dab49d;
   flex-wrap: nowrap;
   padding: 8px;
@@ -100,7 +171,7 @@
 }
 
 .name-action {
-  background-color: #895737;
+  background-color: #7f5539;
   padding: 15px;
   border: solid 2px #f3e9dc;
   border-radius: 5px;
@@ -113,7 +184,7 @@
 }
 
 .cards-infos {
-  background-color: #895737;
+  background-color: #7f5539;
   border-radius: 5px;
   color: #f3e9dc;
   gap: 5px;
@@ -152,9 +223,9 @@ input {
   margin: 8px;
   border-radius: 5px;
   cursor: pointer;
-  padding: 5px;
-  width: 95px;
-  height: 30px;
+  padding: 8px;
+  min-width: 95px;
+  min-height: 30px;
 }
  /* Custom buttons */
 
@@ -178,11 +249,11 @@ input {
 
 .home-btn {
   background-color: #C29803;
-  color: rgb(31, 31, 96);
+  color: #5e3023;
 }
 
 .home-btn:hover {
-  background-color: rgb(31, 31, 96);
+  background-color: #5e3023;
   color: #C29803;
   border: dotted 2px #C29803;
 }
