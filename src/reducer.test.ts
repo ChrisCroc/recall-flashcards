@@ -71,3 +71,21 @@ test("delete_card filters the cards and delete the right one", () => {
 
   expect(result).toEqual({ version: 1, decks: [], cards: [card, otherCard] })
 })
+
+test("edit_card updates the text of the targeted card without touching its SM-2 history", () => {
+  const card = makeCard({ id: "1", front: "JS", back: "JS answer" })
+  const card2 = makeCard({ id: "2", front: "React", back: "React answer" })
+  const editedCard3 = makeCard({ id: "3", front: "TS", back: "TS answer", easeFactor: 3, interval: 1, repetitions: 1, dueDate: new Date("2026-11-01").toISOString() })
+
+  const cardState: AppData = { version: 1, decks: [], cards: [card, card2, editedCard3] }
+
+  const result = reducer(cardState, { type: "edit_card", id: editedCard3.id, front: "js modified", back: "js modified answer" })
+
+  expect(result).toEqual({ version: 1, decks: [], cards: [card, card2, makeCard({ id: editedCard3.id,
+                                                                                  front: "js modified",
+                                                                                  back: "js modified answer",
+                                                                                  easeFactor: editedCard3.easeFactor,
+                                                                                  interval: editedCard3.interval,
+                                                                                  repetitions: editedCard3.repetitions,
+                                                                                  dueDate: editedCard3.dueDate })]})
+})

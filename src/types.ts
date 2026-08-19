@@ -38,3 +38,4 @@ export type Action =
   | { type: "rename_deck"; id: string; name: string}
   | { type: "add_card"; card: Card }
   | { type: "delete_card"; id: string }
+  | { type: "edit_card"; id: string; front: string; back: string }
