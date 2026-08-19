@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import type { Card, Deck, Action } from "../types"
 import type { Dispatch, ChangeEvent } from "react"
 
@@ -15,15 +15,28 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
 
   const currentDeck =  deckId === null ? null : decks.find(deck => deck.id === deckId) ?? null
   const currentCards = currentDeck === null ? [] : cards.filter(card => currentDeck.id === card.deckId)
+  const ref = useRef<HTMLInputElement>(null)
+  // States
+
   const [text, setText] = useState(currentDeck === null ? "" : currentDeck.name)
   const [rectoText, setRectoText] = useState("")
   const [versoText, setVersoText] = useState("")
+  const [currentCard, setCurrentCard] = useState<string | null>(null)
+  const [cardRectoText, setCardRectoText] = useState("")
+  const [cardVersoText, setCardVersoText] = useState("")
+
+  function modifyCard(modifiedCard: Card) {
+    setCurrentCard(modifiedCard.id)
+    setCardRectoText(modifiedCard.front)
+    setCardVersoText(modifiedCard.back)
+  }
 
   const cardDisplay = currentCards.map(card => (
     <div key={card.id} className="card-display">
       <p>{card.front}</p>
       <p>{card.back}</p>
       <button className="btn suppress-btn" onClick={() => dispatch({ type: "delete_card", id: card.id })}>Supprimer</button>
+      <button className="btn editor-btn" onClick={() => modifyCard(card)}>Modifier</button>
     </div>
   ))
 
@@ -37,6 +50,14 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
 
   const inputVersoText = (e: ChangeEvent<HTMLInputElement>) => {
     setVersoText(e.target.value)
+  }
+
+  const inputRectoCardText = (e: ChangeEvent<HTMLInputElement>) => {
+    setCardRectoText(e.target.value)
+  }
+
+  const inputVersoCardText = (e: ChangeEvent<HTMLInputElement>) => {
+    setCardVersoText(e.target.value)
   }
 
   function handleSubmit() {
@@ -69,6 +90,16 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
     setVersoText("")
   }
 
+  function handleSubmitModify() {
+    if (currentCard === null) return
+    dispatch({ type: "edit_card", id: currentCard, front: cardRectoText, back: cardVersoText })
+    setCurrentCard(null)
+  }
+
+  useEffect(() => {
+    ref.current?.focus()
+  }, [currentCard])
+
   return (
     <div className="container">
       <h1>{currentDeck === null ? "New Deck" : currentDeck.name}</h1>
@@ -94,6 +125,13 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
           </span>
         </div>
       </div>
+      {currentCard !== null &&
+        <div>
+          <input type="text" ref={ref} value={cardRectoText} onChange={inputRectoCardText} />
+          <input type="text" value={cardVersoText} onChange={inputVersoCardText} />
+          <button className="btn easy-btn" onClick={handleSubmitModify}>Valider</button>
+        </div>
+      }
       <div className="editor-home-btn">
         <button className="btn home-btn" onClick={onExit}>Accueil</button>
       </div>
