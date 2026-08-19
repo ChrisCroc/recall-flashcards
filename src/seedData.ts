@@ -1,7 +1,8 @@
+import { SCHEMA_VERSION } from "./storage"
 import type { AppData } from "./types"
 
 export const initialData: AppData =
-  { version: 1,
+  { version: SCHEMA_VERSION,
     decks: [ {
       id: "Deck1",
       name: "Javascript",
