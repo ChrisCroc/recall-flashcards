@@ -33,8 +33,8 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
 
   const cardDisplay = currentCards.map(card => (
     <div key={card.id} className="card-display">
-      <p>{card.front}</p>
-      <p>{card.back}</p>
+      <p title={card.front}><span>{card.front}</span></p>
+      <p title={card.back}><span>{card.back}</span></p>
       <button className="btn suppress-btn" onClick={() => dispatch({ type: "delete_card", id: card.id })}>Supprimer</button>
       <button className="btn editor-btn" onClick={() => modifyCard(card)}>Modifier</button>
     </div>
@@ -103,33 +103,42 @@ export function DeckEditorScreen({ deckId, decks, cards, dispatch, onExit, onOpe
   return (
     <div className="container">
       <h1>{currentDeck === null ? "New Deck" : currentDeck.name}</h1>
-      {cardDisplay}
+      <div className="card-list">{cardDisplay}</div>
       <div className="name-action">
         <h3>{currentDeck === null ? "Nouveau deck" : "Modifier le nom du deck"}</h3>
         <div className="name-action-entries">
-          <input type="text" value={text} onChange={inputText} />
+          <input aria-label="Nom du deck" type="text" value={text} onChange={inputText} />
           <button className="btn easy-btn" onClick={handleSubmit}>Valider</button>
         </div>
       </div>
       <div className="cards-infos">
         <h3>Nouvelle carte</h3>
         <div className="card-input">
-          <span>
-          <p>Question</p>
-          <input type="text" value={rectoText} onChange={inputRectoText} />
-          </span>
-          <span>
-            <p>Réponse</p>
-            <input type="text" value={versoText} onChange={inputVersoText} />
-            <button className="btn easy-btn" onClick={handleCardSubmit}>Valider</button>
-          </span>
+          <div className="field">
+            <label htmlFor="new-front">Question</label>
+            <input id="new-front" type="text" value={rectoText} onChange={inputRectoText} />
+          </div>
+          <div className="field">
+            <label htmlFor="new-back">Réponse</label>
+            <input id="new-back" type="text" value={versoText} onChange={inputVersoText} />
+          </div>
+          <button className="btn easy-btn" onClick={handleCardSubmit}>Valider</button>
         </div>
       </div>
       {currentCard !== null &&
-        <div>
-          <input type="text" ref={ref} value={cardRectoText} onChange={inputRectoCardText} />
-          <input type="text" value={cardVersoText} onChange={inputVersoCardText} />
-          <button className="btn easy-btn" onClick={handleSubmitModify}>Valider</button>
+        <div className="card-modifier">
+          <h3>Modifier la carte</h3>
+          <div className="card-modifier-input">
+            <div className="field">
+              <label htmlFor="edit-front">Question</label>
+              <input id="edit-front" type="text" ref={ref} value={cardRectoText} onChange={inputRectoCardText} />
+            </div>
+            <div className="field">
+              <label htmlFor="edit-back">Réponse</label>
+              <input id="edit-back" type="text" value={cardVersoText} onChange={inputVersoCardText} />
+            </div>
+            <button className="btn easy-btn" onClick={handleSubmitModify}>Valider</button>
+          </div>
         </div>
       }
       <div className="editor-home-btn">

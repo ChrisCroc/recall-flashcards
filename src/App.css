@@ -145,28 +145,65 @@ progress::-moz-progress-bar {
 
 /* Editor */
 
+.card-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
+  row-gap: 15px;
+  column-gap: 5px;
+}
+
 .card-display {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
   background-color: #7f5539;
   border-radius: 5px;
   color: #5e3023;
-  gap: 5px;
-  margin: 15px auto;
+  padding: 8px;
   box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
 }
 
 .card-display > p {
-  box-shadow: 2px 2px 2px #f3e9dc;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #dab49d;
-  flex-wrap: nowrap;
   padding: 8px;
   min-height: 50px;
-  min-width: 100px;
   text-align: center;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
+}
+
+.card-display > p > span {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-display > p:hover > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  background-color: #dab49d;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
+}
+
+.card-display > .btn {
+  align-self: center;
 }
 
 .name-action > h3 {
@@ -220,6 +257,32 @@ input {
   align-items: center;
   justify-content: center;
   margin-top: 15px;
+}
+
+.card-modifier {
+  background-color: #7f5539;
+  margin: 25px auto;
+  padding: 8px;
+  border-radius: 5px;
+  color: #f3e9dc;
+  box-shadow: 0 3px 8px rgba(1, 1, 56, 0.9);
+}
+
+.card-modifier > h3 {
+  text-align: center;
+}
+
+.card-modifier-input {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 /* Button generic */
